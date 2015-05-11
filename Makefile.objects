@@ -1,0 +1,18 @@
+xm.lo: /root/php/ext/xm/xm.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm.c -o xm.lo 
+xm_application.lo: /root/php/ext/xm/xm_application.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm_application.c -o xm_application.lo 
+xm_loader.lo: /root/php/ext/xm/xm_loader.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm_loader.c -o xm_loader.lo 
+xm_request.lo: /root/php/ext/xm/xm_request.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm_request.c -o xm_request.lo 
+xm_controller.lo: /root/php/ext/xm/xm_controller.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm_controller.c -o xm_controller.lo 
+xm_router.lo: /root/php/ext/xm/xm_router.c
+	$(LIBTOOL) --mode=compile $(CC)  -I. -I/root/php/ext/xm $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS)  -c /root/php/ext/xm/xm_router.c -o xm_router.lo 
+$(phplibdir)/xm.la: ./xm.la
+	$(LIBTOOL) --mode=install cp ./xm.la $(phplibdir)
+
+./xm.la: $(shared_objects_xm) $(XM_SHARED_DEPENDENCIES)
+	$(LIBTOOL) --mode=link $(CC) $(COMMON_FLAGS) $(CFLAGS_CLEAN) $(EXTRA_CFLAGS) $(LDFLAGS) -o $@ -export-dynamic -avoid-version -prefer-pic -module -rpath $(phplibdir) $(EXTRA_LDFLAGS) $(shared_objects_xm) $(XM_SHARED_LIBADD)
+
